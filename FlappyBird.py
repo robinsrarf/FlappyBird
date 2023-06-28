@@ -22,11 +22,12 @@ class Bird:
         if self.pos[1] < H:
             self.vel += self.a
             self.pos[1] += self.vel
-        screen.blit(self.sprite, (self.pos[0]-self.img_size[0]//2, self.pos[1]-self.img_size[1]//2))
-        #pg.draw.circle(screen, "red", self.pos, 5)
+        screen.blit(
+            self.sprite, (self.pos[0]-self.img_size[0]//2, self.pos[1]-self.img_size[1]//2))
 
 
-player = Bird([W//2, H//2], "C:\\Users\\robin\\Desktop\\FlappyBird\\sprites\\bird.png")
+player = Bird(
+    [W//2, H//2], "C:\\Users\\robin\\Desktop\\FlappyBird\\sprites\\bird.png")
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -37,6 +38,6 @@ while True:
 
     screen.fill('black')
     player.update()
-    
+
     pg.display.update()
     clock.tick(60)
