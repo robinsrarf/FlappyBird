@@ -10,6 +10,26 @@ pg.display.set_caption("FlappyBird")
 clock = pg.Clock()
 
 
+class pipe:
+    def __init__(self, pos, img, gap):
+        self.pos = pos
+        self.gap = gap
+        self.sprite = pg.image.load(img)
+        self.sprite_f = pg.transform.flip(self.sprite, False, True)
+        self.img_size = self.sprite.get_size()
+
+
+    def draw(self):
+        screen.blit(self.sprite, (self.pos[0], 0))
+        screen.blit(self.sprite_f, (self.pos[0],self.img_size[1]))
+        
+
+    def update(self):
+        if self.pos[0]-self.img_size[0] >= W:
+            self.pos[0] += 1
+        self.draw()
+
+        
 class Bird:
     def __init__(self, pos, img):
         self.pos = pos
